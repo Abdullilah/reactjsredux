@@ -1,37 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
-    constructor(props){
-        super();
-        this.state = {
-            newName: props.initialName
-        }
-    }
-
-    changeValue(){
-        this.props.changeValue(this.state.newName);
-    }
-
-    onchangeTextInputValue(event){
-        this.setState({
-            newName: event.target.value
-        });
-    }
-
     render() {
         return (
-            <div>
-                <h1>Header</h1>
-                <h2>{this.props.data.name}</h2>
-                <ul>
-                    {this.props.data.arr.map( (ele, i) => <li key={i}>{ele}</li>)}
-                </ul>
-                <h2>{this.props.children}</h2>
-                <button className="btn btn-danger" onClick={this.changeValue.bind(this)}>
-                    Change the parent value
-                </button>
-                <input type="text" onChange={(event) => this.onchangeTextInputValue(event)}/>
-            </div>
+            <nav className="navbar navbar-inverse">
+                <div className="container">
+                    <div className="navbar-header">
+                        <ul className="nav navbar-nav">
+                            <li><Link to="/home">Home</Link></li>
+                            <li><Link to="/about">About</Link></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         );
     }
 }
