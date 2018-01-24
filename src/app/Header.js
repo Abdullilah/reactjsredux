@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 
 class Header extends Component {
-    constructor(){
+    constructor(props){
         super();
         this.state = {
-            newName: 'Anna'
+            newName: props.initialName
         }
     }
 
     changeValue(){
         this.props.changeValue(this.state.newName);
+    }
+
+    onchangeTextInputValue(event){
+        this.setState({
+            newName: event.target.value
+        });
     }
 
     render() {
@@ -24,6 +30,7 @@ class Header extends Component {
                 <button className="btn btn-danger" onClick={this.changeValue.bind(this)}>
                     Change the parent value
                 </button>
+                <input type="text" onChange={(event) => this.onchangeTextInputValue(event)}/>
             </div>
         );
     }

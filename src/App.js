@@ -25,7 +25,10 @@ class App extends Component {
         return (
           <div>
               <div className="header">
-                  <Header data={this.state.myData} changeValue={this.changeParentValue.bind(this)}>
+                  <Header data={this.state.myData}
+                          changeValue={this.changeParentValue.bind(this)}
+                          initialName={"Anna"}
+                  >
                       <div>This is a child inside the Header Tag</div>
                   </Header>
               </div>
