@@ -10,19 +10,19 @@ class App extends Component {
       }
     return (
       <div>
-        <div className="header">
-            <Header data={myData}>
-                <div>This is a child inside the Header Tag</div>
-            </Header>
-        </div>
-        <div className="container home">
-          <div className="row">
-            <div className="col-sm-12">
-              <Home name={"Max"} age={26}/>
-              <Home name={"Jon"} age={22}/>
-            </div>
+          <div className="header">
+              <Header data={myData}>
+                  <div>This is a child inside the Header Tag</div>
+              </Header>
           </div>
-        </div>
+          <div className="container home">
+              <div className="row">
+                  <div className="col-sm-12">
+                      <Home name={"Max"} age={26}/>
+                      <Home name={"Jon"} age={22}/>
+                  </div>
+              </div>
+          </div>
       </div>
     );
   }
