@@ -4,7 +4,7 @@ class Home extends Component {
     constructor(props){
         super();
         this.state = {
-            age : props.age
+            age : props.age,
         }
     }
 
@@ -23,6 +23,7 @@ class Home extends Component {
                 <button className="btn btn-primary" onClick={this.increaseAge.bind(this)}>
                     Increase Age
                 </button>
+                <h1>{this.props.newName}</h1>
             </div>
         );
     }
