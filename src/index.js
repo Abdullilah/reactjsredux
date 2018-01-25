@@ -1,11 +1,8 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
-//
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { Provider } from 'react-redux';
+import registerServiceWorker from './registerServiceWorker';
 
 import {createStore, combineReducers} from 'redux';
 
@@ -40,8 +37,6 @@ const reducer1 = (state = initislState1, action) => {
     return state;
 }
 
-
-
 const reducer2 = (state = initislState2, action) => {
     switch (action.type){
         case "SET_NAME":
@@ -68,27 +63,7 @@ store.subscribe(()=> {
     console.log(store.getState());
 });
 
-store.dispatch({
-    type: "ADD",
-    payload: 10
-});
-
-store.dispatch({
-    type: "ADD",
-    payload: 5
-});
-
-store.dispatch({
-    type: "Sub",
-    payload: 10
-});
-
-store.dispatch({
-    type: "SET_NAME",
-    payload: 'Fadi'
-});
-
-store.dispatch({
-    type: "SET_SURNAME",
-    payload: 'Horani'
-});
+ReactDOM.render(<Provider store={store}>
+                    <App />
+                </Provider>, document.getElementById('root'));
+registerServiceWorker();
