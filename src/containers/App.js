@@ -2,81 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../index.css';
 import * as dateActions from "../actions/reducer1Actions";
+import Home from "../components/Home";
 
 class App extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            text: '',
-            date: '',
-        }
-    }
-
-    addDate(date){
-        if(date.text === '' || date.date === ''){
-            return;
-        }
-        this.props.addDate(date);
-        this.forceUpdate();
-    }
-
-    deleteDate(id){
-        this.props.deleteDate(id);
-    }
-
-    deleteAllDate(){
-        this.props.deleteAllDate();
-    }
-
-    changeDate(event){
-        this.setState({
-            date: event.target.value
-        });
-    }
-
-    changeText(event){
-        this.setState({
-            text: event.target.value
-        });
-    }
-
-    rebderMehtod(){
-        const myDates = this.props.r1;
-        return (
-            <ul>
-                {myDates.map((obj)=>{
-                    return (
-                        <li key={obj.id}>
-                            <p>{obj.text}</p>
-                            <span>{obj.date}</span>
-                            <span className="delete"
-                                  onClick={() => this.deleteDate(obj.id)}>
-                               Delete
-                            </span>
-                        </li>
-                    )
-                })}
-            </ul>
-        );
-
-    }
 
     render() {
         return (
-            <div className="app container">
-                <h1 className="text-center">Add Your Reminder</h1>
-                <input type="text" className="form-control"
-                       onChange={(event) => this.changeText(event)}
-                       placeholder="I will do..."/>
-                <input type="date" className="form-control"
-                       onChange={(event) => this.changeDate(event)}/>
-                <button className="btn btn-success"
-                        onClick={() => this.addDate(this.state)}>Add Reminder</button>
-                <button className="btn btn-danger"
-                        onClick={() => this.deleteAllDate()}>Clear All</button>
-                <div>{this.rebderMehtod()}</div>
-
-            </div>
+            <Home
+                r1={this.props.r1}
+                addDate={this.props.addDate.bind(this)}
+                deleteDate={this.props.deleteDate.bind(this)}
+                deleteAllDate={this.props.deleteAllDate.bind(this)}
+            />
         );
     }
 }
