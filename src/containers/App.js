@@ -3,17 +3,39 @@ import { connect } from 'react-redux';
 import '../index.css';
 import * as dateActions from "../actions/reducer1Actions";
 import Home from "../components/Home";
+import About from "../components/About";
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from "react-router-dom";
 
 class App extends Component {
 
     render() {
         return (
-            <Home
-                r1={this.props.r1}
-                addDate={this.props.addDate.bind(this)}
-                deleteDate={this.props.deleteDate.bind(this)}
-                deleteAllDate={this.props.deleteAllDate.bind(this)}
-            />
+            <Router>
+                <div>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                    </ul>
+
+                    <hr/>
+
+
+                    <Route exact path='/' render={(props) => (
+                        <Home {...props}
+                              r1={this.props.r1}
+                              addDate={this.props.addDate.bind(this)}
+                              deleteDate={this.props.deleteDate.bind(this)}
+                              deleteAllDate={this.props.deleteAllDate.bind(this)} />
+                    )}/>
+                    <Route path="/about" component={About}/>
+                </div>
+            </Router>
+
+
         );
     }
 }

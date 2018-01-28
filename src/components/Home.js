@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../index.css';
 import moment from 'moment';
 
 class Home extends Component {
